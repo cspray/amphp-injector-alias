@@ -15,9 +15,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 $definitions = definitions();
 
-$definitions = $definitions->with(singleton(object(
-    FooImplementation::class
-)), FooImplementation::class);
+$definitions = $definitions->with(singleton(object(FooImplementation::class)), FooImplementation::class);
 
 $types = types();
 $types = $types->with(FooInterface::class, $definitions->get(FooImplementation::class));
