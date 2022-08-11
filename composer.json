@@ -1,0 +1,11 @@
+{
+    "require": {
+        "kelunik/fiber-local": "dev-main",
+        "amphp/injector": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cspray\\AmpInjectorAlias\\": "src"
+        }
+    }
+}
