@@ -31,6 +31,8 @@ $definitions = $definitions->with($definitions->get(FooImplementation::class), F
 $app = new Application(new Injector(any(automaticTypes($definitions))), $definitions);
 $app->start();
 
+var_dump($app->getContainer()->get(FooInterface::class));
+
 var_dump($app->getInjector()->getExecutableProvider(
     new ReflectionFunctionExecutable(new ReflectionFunction($firstCallable)),
     arguments(any(automaticTypes($definitions), names()->with('val', value(1))))
