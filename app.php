@@ -9,7 +9,6 @@ use function Amp\Injector\automaticTypes;
 use function Amp\Injector\definitions;
 use function Amp\Injector\object;
 use function Amp\Injector\singleton;
-use function Amp\Injector\types;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -17,10 +16,10 @@ $definitions = definitions();
 
 $definitions = $definitions->with(singleton(object(FooImplementation::class)), FooImplementation::class);
 
-$types = types();
-$types = $types->with(FooInterface::class, $definitions->get(FooImplementation::class));
+// Uncommenting this line will clear up errors and get this to work
+// $definitions = $definitions->with($definitions->get(FooImplementation::class), FooInterface::class);
 
-$app = new Application(new Injector(any($types, automaticTypes($definitions))), $definitions);
+$app = new Application(new Injector(any(automaticTypes($definitions))), $definitions);
 
 $app->start();
 
