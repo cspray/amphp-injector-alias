@@ -25,3 +25,11 @@ $app = new Application(new Injector(any($types, automaticTypes($definitions))), 
 $app->start();
 
 var_dump($app->getContainer()->get(FooInterface::class));
+
+// Results in
+// PHP Fatal error:  Uncaught Amp\Injector\NotFoundException: Unknown identifier: Cspray\AmpInjectorAlias\FooInterface in /home/cspray/Code/personal/amphp-injector-alias/vendor/amphp/injector/src/RootContainer.php:28
+// Stack trace:
+// #0 /home/cspray/Code/personal/amphp-injector-alias/vendor/amphp/injector/src/RootContainer.php(20): Amp\Injector\RootContainer->getProvider()
+// #1 /home/cspray/Code/personal/amphp-injector-alias/app.php(27): Amp\Injector\RootContainer->get()
+// #2 {main}
+// thrown in /home/cspray/Code/personal/amphp-injector-alias/vendor/amphp/injector/src/RootContainer.php on line 28
